@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+
+    <!-- CSS LINK (VERY IMPORTANT) -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+    <div class="logo">MyPortfolio</div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#project">Projects</a></li>
+        <li><a href="#content" class="contact-btn">Contact</a></li>
+    </ul>
+</header>
+
+<!-- ================= HOME ================= -->
+<section id="home" class="flex s-around items-center my-2">
+    <div class="home-content">
+        <h6>Hello 👋</h6>
+        <h1>I am Developer</h1>
+        <h4>Django & Python</h4>
+        <a href="#content" class="btn">Contact Me</a>
+    </div>
+
+    <div class="circle">
+        <img src="{% static 'images/gang.jpg' %}" alt="profile">
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="flex s-around items-center my-2">
+    <div class="about-left">
+        <img src="{% static 'images/mypic.jpg' %}" alt="">
+    </div>
+
+    <div class="about-right t-white">
+        <h2>About Me</h2>
+        <p>
+            I am learning Django and building real projects step by step.
+        </p>
+    </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="my-2 t-white">
+    <h2 class="t-center">Skills</h2>
+
+    <div class="bar">Python</div>
+    <div class="bar">Django</div>
+    <div class="bar">HTML & CSS</div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="project" class="my-2">
+    <h2 class="t-center t-white">Projects</h2>
+
+    <div class="flex s-center">
+        <div class="project-item t-white">
+            <h3>Portfolio Website</h3>
+            <p>Django based portfolio project.</p>
+        </div>
+
+        <div class="project-item t-white">
+            <h3>Contact Form</h3>
+            <p>Form with database storage.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="content" class="my-2">
+    <h2 class="t-center t-white">Contact Me</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="t-center t-white">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" class="form-div flex f-col items-center">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Your Name">
+        <input type="email" name="email" placeholder="Your Email">
+        <input type="text" name="number" placeholder="Your Phone">
+        <textarea name="content" placeholder="Message"></textarea>
+
+        <button class="btn">Submit</button>
+    </form>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="footer" class="t-center">
+    <p class="t-white">© 2026 My Portfolio</p>
+</footer>
+
+</body>
+</html>
